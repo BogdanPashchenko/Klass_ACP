@@ -1,100 +1,171 @@
 :imagesdir: photo
 
-Нужно было сделать класс для АЦП через программу, потом прописать в IAR всё это.
+Стояла задача сделать класс для прошлой лабораторной работы, где проводились измерения напряжения и температуры с помощью АЦП.
 
-Класс, в моем понимании, должен выглядить так:
+Первое, что нужно сделать - создать архитектуру отдельно взятого каждого класса (в данной лабораторной их 3).
 
-image::obshee.png[]
+Архитектура класса АЦП выглядит следующим образом:
 
-Но,я не понимаю как прописывать атрибуты - скорость дискретизации, количество измерений.
+image::ACP.png[]
 
-Так же не понимаю как сделать приватные, а не публичные. Может, есть какая литература по этому поводу? Или мы позже это, в сб, проходить и разбирать будем?
+И, после того, как прописали архитектуру в программе UML, следует прописать её либо в рабочем коде (файл main), либо же, для большего удобства и красоты, в отдельно взятом hpp- файле, что и было сделано (так же как и для температуры и напряжения).
 
-Сам код выглядит следующим образом:
+image::all.png[]
 
-    class ACP
+Сам код для класса АЦП:
+
+    enum class Resolution 
     {
-     private:
-    {
-    void VoltageSet ()
-   {
-   RCC::AHB1ENR::GPIOAEN::Enable::Set();
-   RCC::AHB1ENR::GPIOAEN::Enable::Set() ; //vkl port A
-   GPIOA::MODER::MODER0::Analog::Set();
-   ADC1::CR2::CONT::SingleConversion::Set(); // cont porkl
-   ADC1::CR2::EOCS::SingleConversion::Set(); //eosk vklichen
-   ADC1::CR1::RES::Bits12::Set(); //ystanovka 12bitov
-   }
-   void TemperatureSet()
-   {
-   ADC_Common::CCR::TSVREFE::Enable::Set(); //temperat. senser  
-   ADC1::CR2::CONT::SingleConversion::Set(); // cont porkl
-   ADC1::CR2::EOCS::SingleConversion::Set(); //eosk vklichen
-   ADC1::CR1::RES::Bits12::Set(); //ystanovka 12bitov
-   }
+  Bits12,
+  Bits10,
+  Bits8,
+  Bits6,
     };
-  public:
-   void SettingACP ()
-   {
-  RCC::CR::HSEON::On::Set(); //podkluchili vneshnii istrochnik
-  while (!RCC::CR::HSERDY::Ready::IsSet() )
-  {
-  };
-  RCC::CFGR::SW::Hse::Set();
-  while ( !RCC::CFGR::SWS::Hse::IsSet( ))
-  { 
-  };
-  RCC::APB2ENR::ADC1EN::Enable::Set(); //acp k istochiky tactirovaniya
-  ADC1::CR2::ADON::Enable::Set();
-   }
-  void Voltage ()
-  {
-   ADC1::SQR1::L::Conversions2::Set(); // kolvo izmerenii 
-   ADC1::SQR3::SQ1::Channel0::Set(); //podkluchili datchik na kanal 18
-   ADC1::SMPR2::SMP0::Cycles480::Set(); //speed diskretizacii
-   constexpr float B1 = 0; // see datacheet (page 226) and calculate B coeficient here ; - napryagenie
-   constexpr float K1 = 3.3F/4096.0F; // see datcheet ((page 226)) and calculate K coeficient here ;  - napryagenie
-   std::uint32_t data2 = 0U ;
-   float voltage = 0.0F ;
-   ADC1::CR2::SWSTART::On::Set();
-   while (ADC1::SR::EOC::ConversionNotComplete::IsSet( )) 
-   { 
-   };
-   data2 = ADC1::DR::Get();//Get data from ADC; 
-   voltage = data2 * K1 + B1 ; //Convert ADC counts to temperature
-   std::cout << "Count: " << data2 << " voltage: " << voltage << std::endl ;
-  }
-  
-  void Temperature ()
-  {
-   ADC1::SQR1::L::Conversions2::Set(); // kolvo izmerenii
-   ADC1::SQR3::SQ1::Channel18::Set(); //podkluchili datchik na kanal 18
-   ADC1::SMPR1::SMP18::Cycles480::Set(); //speed diskretizacii
-   constexpr float B2 = (25.0F-0.76F/0.0025F); // see datacheet (page 226) and calculate B coeficient here ; -tempa
-   constexpr float K2 = ((3.3F/4096.0F)/0.0025F); // see datcheet ((page 226)) and calculate K coeficient here ; -tempa
-   std::uint32_t data1 = 0U ;
-   float temperature = 0.0F ;
-   ADC1::CR2::SWSTART::On::Set();
-   while (ADC1::SR::EOC::ConversionNotComplete::IsSet( )) 
+    template <class Adc>
+    class ADC
+    {
+    public: 
+  static void On()
      { 
-     };
-   data1 = ADC1::DR::Get();//Get data from ADC;
-   temperature = data1* K2+B2; // tempa
-   std::cout << "Count: " << data1 << " Temperature: " << temperature << std::endl ;
-  }
-    };
-    int main()
+    Adc::CR2::ADON::Enable::Set(); 
+     }
+    static void Off()
     {
-    ACP ADC1;
-  ADC1. SettingACP();
-  ADC1. Voltage();
-  ADC1. Temperature();
-  return 0;
-}  
+    Adc::CR2::ADON::Disable::Set();
+    }
+     static void Start()
+    {
+      Adc::CR2::SWSTART::On::Set(); 
+    }
+    static bool IsReady()
+    {
+      return  Adc::SR::EOC::ConversionComplete::IsSet(); //preobr zakoncheno
+    }
+    static uint32_t Get()
+     {
+      return Adc::DR::Get() ;
+     }
+     static void Config(Resolution resolution)
+     {
+       switch (resolution)
+       {
+     case Resolution::Bits12:
+       Adc::CR1::RES::Bits12::Set();
+       break;
+     case Resolution::Bits10:
+       Adc::CR1::RES::Bits10::Set();
+       break;
+     case Resolution::Bits8:
+       Adc::CR1::RES::Bits8::Set();
+       break;
+     case Resolution::Bits6:
+       Adc::CR1::RES::Bits6::Set();
+       break;
+       default:
+       Adc::CR1::RES::Bits12::Set();
+       break;
+     }
+    }
+     static void ConfigChannel (std::uint32_t NumChannel,std::uint32_t NumChannel1) //izmerenia
+     {
+     ScanConfig() ;
+     Adc::SQR1::L::Conversions2::Set();
+     assert(NumChannel < 19);
+     Adc::SQR3::SQ1::Set(NumChannel); // kanal 
+     assert(NumChannel1 < 19);
+     Adc::SQR3::SQ2::Set(NumChannel1); // kanal 
+   }
+  
+     static void ScanConfig()
+     {
+    Adc::CR1::SCAN::Enable::Set();
+    Adc::CR2::CONT::SingleConversion::Set(); 
+    Adc::CR2::EOCS::SingleConversion::Set(); 
+  }
+    } ;
+    
 
+Здесь расписано по классам, которые были представлены в архитектуре.
 
-Он работает, измерения проводит.
+Далее точно так же надо было сделать с температурой и напряжением:
+
+image::tav.png[]
+
+Код для класса температуры - 
+
+    class Temperature
+    {
+    private:
+      float B1 = (25.0F-0.76F/0.0025F); 
+      float K1 = ((3.3F/4096.0F)/0.0025F); 
+     float value = 0.0F ;
+    public:
+     Temperature ()
+     {
+     };
+     Temperature (float K, float B): K1(K), B1(B)
+    {
+    }
+      ;
+     void Calculation (std::uint32_t data1)
+     {
+      value = data1* K1 + B1;
+    }
+     float GetValue() 
+    {
+    return value ;
+     }
+    };
+    
+Код для класса напряжения - 
+
+    class Voltage
+    {
+    private:
+     float B2 = 0.0F; 
+     float K2 = (3.3F/4096.0F); 
+     float value = 0.0F ;
+    public:
+     Voltage ()
+     {
+     };
+     Voltage (float K, float B): K2(K), B2(B)
+     {
+     }
+      ;
+     void CalculationV (std::uint32_t data2)
+     {
+       value = data2 * K2 + B2;
+     }
+     float GetValueV() 
+     {
+      return value ;
+     }
+    };
+    
+В итоге, вместе с этими классами рабочий main выглядит следующим образом :
+
+image::main.png[]
+
+Окно вывода результатов измерений:
 
 image::izmerenie.png[]
 
 
+Далее следует объединить два класса (температуры и напряжения) в один:
+
+image::t.png[]
+
+image::v.png[]
+
+image::ivar.png[]
+
+main получается следующим образом:
+
+image::main2.png[]
+
+Но дальше у меня вылезает ошибка, и я не могу понять в связи с чем:
+
+image::help.png[]
+
+image::heelp2.png[]
