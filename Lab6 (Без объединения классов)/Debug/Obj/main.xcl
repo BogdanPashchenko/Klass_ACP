@@ -1,26 +1,26 @@
-"F:\Lab6\main.cpp"
+"D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\main.cpp"
 -std=c++17
 -ferror-limit=0
 -fbracket-depth=512
 -MD
 -MF
-F:\Lab6\Debug\Obj\main.pbi.dep
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\Debug\Obj\main.pbi.dep
 -o
 main.pbi
 -I
-F:\Lab6
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)
 -I
-F:\Lab6\AbstractHardware
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\AbstractHardware
 -I
-F:\Lab6\AbstractHardware\Atomic
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\AbstractHardware\Atomic
 -I
-F:\Lab6\AbstractHardware\Registers
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\AbstractHardware\Registers
 -I
-F:\Lab6\AbstractHardware\Registers\STM32F411
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\AbstractHardware\Registers\STM32F411
 -I
-F:\Lab6\AbstractHardware\Registers\STM32F411\FieldValues
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\AbstractHardware\Registers\STM32F411\FieldValues
 -I
-F:\Lab6\Common
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\Common
 -I
 D:\Kolody\iar\arm\inc
 -I
@@ -28,17 +28,17 @@ D:\Kolody\iar\arm\inc\c
 -I
 D:\Kolody\iar\arm\inc\cpp
 -I
-F:\Lab6\AbstractHardware
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\AbstractHardware
 -I
-F:\Lab6\AbstractHardware\Atomic
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\AbstractHardware\Atomic
 -I
-F:\Lab6\AbstractHardware\Registers
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\AbstractHardware\Registers
 -I
-F:\Lab6\AbstractHardware\Registers\STM32F411
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\AbstractHardware\Registers\STM32F411
 -I
-F:\Lab6\AbstractHardware\Registers\STM32F411\FieldValues
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\AbstractHardware\Registers\STM32F411\FieldValues
 -I
-F:\Lab6\Common
+D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\Common
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

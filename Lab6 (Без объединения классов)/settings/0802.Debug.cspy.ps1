@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "D:\Kolody\iar\common\bin\cspybat" -f "F:\Lab6\settings\0802.Debug.general.xcl" --backend -f "F:\Lab6\settings\0802.Debug.driver.xcl" 
+& "D:\Kolody\iar\common\bin\cspybat" -f "D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\settings\0802.Debug.general.xcl" --backend -f "D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\settings\0802.Debug.driver.xcl" 
 }
 else
 {
-& "D:\Kolody\iar\common\bin\cspybat" -f "F:\Lab6\settings\0802.Debug.general.xcl" --debug_file=$debugfile --backend -f "F:\Lab6\settings\0802.Debug.driver.xcl" 
+& "D:\Kolody\iar\common\bin\cspybat" -f "D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\settings\0802.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\settings\0802.Debug.driver.xcl" 
 }

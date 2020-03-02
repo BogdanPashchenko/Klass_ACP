@@ -4,8 +4,8 @@
 class IVariable
 {
 private:
-  const float B= 0.0F;
-  const float K = 0.0F;
+  const float B1= 0.0F;
+  const float K1 = 0.0F;
   float Value = 0.0F;  
 
   const char* Name = "Variable       " ; 

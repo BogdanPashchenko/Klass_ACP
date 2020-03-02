@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"D:\Kolody\iar\common\bin\cspybat" -f "F:\Lab6\settings\0802.Debug.general.xcl" --backend -f "F:\Lab6\settings\0802.Debug.driver.xcl" 
+"D:\Kolody\iar\common\bin\cspybat" -f "D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\settings\0802.Debug.general.xcl" --backend -f "D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\settings\0802.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"D:\Kolody\iar\common\bin\cspybat" -f "F:\Lab6\settings\0802.Debug.general.xcl" "--debug_file=%~1" --backend -f "F:\Lab6\settings\0802.Debug.driver.xcl" 
+"D:\Kolody\iar\common\bin\cspybat" -f "D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\settings\0802.Debug.general.xcl" "--debug_file=%~1" --backend -f "D:\POIP\Git_hub\Klass_ACP\Lab6 (Без объединения классов)\settings\0802.Debug.driver.xcl" 
 
 @echo off 
 :end

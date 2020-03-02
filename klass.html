@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.8.dev">
-<title>Untitled</title>
+<title>Отчет по классам</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,16 +438,55 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
+<h1>Отчет по классам</h1>
 </div>
 <div id="content">
+<div class="sect2">
+<h3 id="trueв-данной-работе-стояла-задача-разобраться-с-объектно-ориентированным-программированием-понятием-класса-и-объекта"><a class="anchor" href="#trueв-данной-работе-стояла-задача-разобраться-с-объектно-ориентированным-программированием-понятием-класса-и-объекта"></a>В данной работе стояла задача разобраться с объектно-ориентированным программированием, понятием класса и объекта.</h3>
 <div class="paragraph">
-<p>Стояла задача сделать класс для прошлой лабораторной работы, где проводились измерения напряжения и температуры с помощью АЦП.</p>
+<p>Объектно-ориентированное программирование (ООП, Object-Oriented
+Programming) - совокупность принципов, технологий, а также
+инструментальных средств для создания программных систем на основе
+архитектуры взаимодействия объектов.</p>
 </div>
 <div class="paragraph">
-<p>Первое, что нужно сделать - создать архитектуру отдельно взятого каждого класса (в данной лабораторной их 3).</p>
+<p>Класс представляет собой абстракцию совокупности реальных объектов, которые имеют общий набор свойств и
+обладают одинаковым поведением.</p>
 </div>
 <div class="paragraph">
-<p>Архитектура класса АЦП выглядит следующим образом:</p>
+<p>Фактически он описывает устройство объекта, являясь своего рода чертежом.</p>
+</div>
+<div class="paragraph">
+<p>Объект в контексте ООП рассматривается как экземпляр соответствующего класса. (например, классом может являться
+человек, а экземпляр класса человек - Усирков Александр).</p>
+</div>
+<div class="paragraph">
+<p>Объекты, которые не имеют идентичных свойств или не
+обладают одинаковым поведением, по определению, не могут быть отнесены к одному классу. (например, лимон, у него
+нет цвета глаз)</p>
+</div>
+<div class="paragraph">
+<p>В работе до этого, я познакомился с настройкой и работой АЦП, с помощью которого получали данные по температуре и напряжению.</p>
+</div>
+<div class="paragraph">
+<p>В этой работе стояла задача оформить классы, т.е визуально сделать задачу "под пользователя"</p>
+</div>
+<div class="paragraph">
+<p>Итак, <em>первое что нужно для начала работы с классами - оформить его структуру в специальной программе UML.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Язык UML представляет собой общецелевой язык визуального моделирования, который
+разработан для спецификации, визуализации, проектирования и документирования
+компонентов программного обеспечения, бизнес-процессов и других систем.</strong></p>
+</div>
+<div class="paragraph">
+<p>Сделать класс отдельной классовой диаграммой, с набором определенных атрибутов и операций, которые подходят лишь под отдельно заданный класс.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="trueкласс-ацп"><a class="anchor" href="#trueкласс-ацп"></a>Класс АЦП</h3>
+<div class="paragraph">
+<p>Рассмотрим пример классовой диаграммы для класса АЦП:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -455,7 +494,57 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>И, после того, как прописали архитектуру в программе UML, следует прописать её либо в рабочем коде (файл main), либо же, для большего удобства и красоты, в отдельно взятом hpp- файле, что и было сделано (так же как и для температуры и напряжения).</p>
+<p>В нем мы видим 10 операций, которые присущи конкретно лишь классу АЦП, и пояснения для них в окне правее.</p>
+</div>
+<div class="paragraph">
+<p>По операциям:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="photo/щт.png" alt="щт">
+</div>
+</div>
+<div class="paragraph">
+<p>Надпись public - публичный, открыт для просмотра, далее идет название операции (<span class="underline">обязательно такое же, какое дали в UML!</span>)</p>
+</div>
+<div class="paragraph">
+<p>И сама операция, в виде кода, в данном случае на примере операции включения - Adc::CR2::ADON::Enable::Set();</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="photo/nd5.png" alt="nd5">
+</div>
+</div>
+<div class="paragraph">
+<p>И по такому же принципу мы создаем дальше операции, которые сами решили, что нам необходимы</p>
+</div>
+<div class="paragraph">
+<p><em>(Сергей Владимирович, я опущу описание операций в одно действие, с вашего разрешения &lt;3)</em></p>
+</div>
+<div class="paragraph">
+<p>Операция Config Resolution - операция с несколькими кейсами, у каждого кейса свое значение разрядности, и пользователю лишь поменять следует кейс, при изменении разряда.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="photo/case.png" alt="case">
+</div>
+</div>
+<div class="paragraph">
+<p>Операция ConfigChannel - настройка каналов на измерений:
+Adc::SQR1::L::Conversions2::Set(); - показывает количетсво измерений
+     assert(NumChannel &lt; 19);
+     Adc::SQR3::SQ1::Set(NumChannel); // kanal
+     assert(NumChannel1 &lt; 19);
+     Adc::SQR3::SQ2::Set(NumChannel1);</p>
+</div>
+<div class="paragraph">
+<p>Показывает, что будут два номера измерений, а assert - задает значение, которое не должно превышать введенное значение, т.к каналов 18, то не должно превышать 19.</p>
+</div>
+<div class="paragraph">
+<p>Операция ScanConfig - операция для настройки и включения сканирования, ничего сложного и необычного нет, всё из библии.</p>
+</div>
+<div class="paragraph">
+<p>И вот теперь, после того, как прописали архитектуру в UML, расписали её (а самое главное поняли что она делает), для красоты и удобства добавляем в дерево проекта файл hpp, в котором прописан весь класс.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -463,97 +552,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>Сам код для класса АЦП:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>  enum class Resolution
-  {
-Bits12,
-Bits10,
-Bits8,
-Bits6,
-  };
-  template &lt;class Adc&gt;
-  class ADC
-  {
-  public:
-static void On()
-   {
-  Adc::CR2::ADON::Enable::Set();
-   }
-  static void Off()
-  {
-  Adc::CR2::ADON::Disable::Set();
-  }
-   static void Start()
-  {
-    Adc::CR2::SWSTART::On::Set();
-  }
-  static bool IsReady()
-  {
-    return  Adc::SR::EOC::ConversionComplete::IsSet(); //preobr zakoncheno
-  }
-  static uint32_t Get()
-   {
-    return Adc::DR::Get() ;
-   }
-   static void Config(Resolution resolution)
-   {
-     switch (resolution)
-     {
-   case Resolution::Bits12:
-     Adc::CR1::RES::Bits12::Set();
-     break;
-   case Resolution::Bits10:
-     Adc::CR1::RES::Bits10::Set();
-     break;
-   case Resolution::Bits8:
-     Adc::CR1::RES::Bits8::Set();
-     break;
-   case Resolution::Bits6:
-     Adc::CR1::RES::Bits6::Set();
-     break;
-     default:
-     Adc::CR1::RES::Bits12::Set();
-     break;
-   }
-  }
-   static void ConfigChannel (std::uint32_t NumChannel,std::uint32_t NumChannel1) //izmerenia
-   {
-   ScanConfig() ;
-   Adc::SQR1::L::Conversions2::Set();
-   assert(NumChannel &lt; 19);
-   Adc::SQR3::SQ1::Set(NumChannel); // kanal
-   assert(NumChannel1 &lt; 19);
-   Adc::SQR3::SQ2::Set(NumChannel1); // kanal
- }</pre>
+<p>Далее, по такому же принципу надо было сделать класс для температуры и напряжения.</p>
 </div>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>   static void ScanConfig()
-   {
-  Adc::CR1::SCAN::Enable::Set();
-  Adc::CR2::CONT::SingleConversion::Set();
-  Adc::CR2::EOCS::SingleConversion::Set();
-}
-  } ;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Здесь расписано по классам, которые были представлены в архитектуре.</p>
-</div>
-<div class="paragraph">
-<p>Далее точно так же надо было сделать с температурой и напряжением:</p>
-</div>
+<div class="sect2">
+<h3 id="trueкласс-температуры"><a class="anchor" href="#trueкласс-температуры"></a>Класс Температуры</h3>
 <div class="imageblock">
 <div class="content">
-<img src="photo/tav.png" alt="tav">
+<img src="photo/t1.png" alt="t1">
 </div>
 </div>
 <div class="paragraph">
-<p>Код для класса температуры -</p>
+<p>Судь данного описания архитектуры: у этого класса есть 3 атрибута, и 3 операции.</p>
+</div>
+<div class="paragraph">
+<p>Атрибуты у нас приватные - коэффициент наклона (К), коэффициент смещения (B), value - рассчитанное значение температуры.</p>
+</div>
+<div class="paragraph">
+<p>И три операции: непосредственно операция расчета с помощью коэффициентов и формулы : value = data1* K1 + B1; где data1 - данные, получаемые с АЦП.</p>
+</div>
+<div class="paragraph">
+<p>GetValue получение значения, рассчитанного методом (операцией) Calculate()</p>
+</div>
+<div class="paragraph">
+<p>И третье - инициализация коэффицентов K1, B1 новыми значениями с помощью конструктора Tempearute, нужно это если будут заменяться коэффициенты, и вечно в формуле их не менять.</p>
+</div>
+<div class="paragraph">
+<p>Сам код для класса температуры выглядит следующим образом -</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -582,8 +607,28 @@ return value ;
 };</pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="trueкласс-напряжения"><a class="anchor" href="#trueкласс-напряжения"></a>Класс Напряжения</h3>
 <div class="paragraph">
-<p>Код для класса напряжения -</p>
+<p>Код для класса напряжения идентичен коду для температуры, те же переменные (но значение разное, конечно), формула та же, операции те же самые, что были выше, в классе температуры.</p>
+</div>
+<div class="paragraph">
+<p>Атрибуты у нас приватные - коэффициент наклона (К), коэффициент смещения (B), value - рассчитанное значение температуры.</p>
+</div>
+<div class="paragraph">
+<p>И три операции: непосредственно операция расчета с помощью коэффициентов и формулы : value = data1* K2 + B2; где data2 - данные, получаемые с АЦП.</p>
+</div>
+<div class="paragraph">
+<p>GetValue получение значения, рассчитанного методом (операцией) Calculate()</p>
+</div>
+<div class="paragraph">
+<p>И третье - инициализация коэффицентов K2, B2 новыми значениями с помощью конструктора Tempearute, нужно это если будут заменяться коэффициенты, и вечно в формуле их не менять.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="photo/v_1.png" alt="v 1">
+</div>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -612,65 +657,172 @@ public:
 };</pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="trueитог-по-этой-работе"><a class="anchor" href="#trueитог-по-этой-работе"></a>Итог по этой работе:</h3>
 <div class="paragraph">
-<p>В итоге, вместе с этими классами рабочий main выглядит следующим образом :</p>
+<p>В итоге рабочий main выглядит следующим образом:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="photo/main.png" alt="main">
 </div>
 </div>
-<div class="paragraph">
-<p>Окно вывода результатов измерений:</p>
 </div>
+<div class="sect2">
+<h3 id="trueокно-вывода-результатов-измерений"><a class="anchor" href="#trueокно-вывода-результатов-измерений"></a>Окно вывода результатов измерений:</h3>
 <div class="imageblock">
 <div class="content">
 <img src="photo/izmerenie.png" alt="izmerenie">
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="trueвывод"><a class="anchor" href="#trueвывод"></a>Вывод:</h3>
 <div class="paragraph">
-<p>Далее следует объединить два класса (температуры и напряжения) в один:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="photo/t.png" alt="t">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="photo/v.png" alt="v">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="photo/ivar.png" alt="ivar">
-</div>
+<p>Данный способ описания/написания класса является, насколько я понимаю, композицией.</p>
 </div>
 <div class="paragraph">
-<p>main получается следующим образом:</p>
+<p>Композиция (агрегирование, включение) –
+простейший механизм для создания нового
+класса путем объединения нескольких объектов
+существующих классов в единое целое</p>
+</div>
+<div class="paragraph">
+<p>Другая задача состоит в том, чтобы написать код для класса наследования:</p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="trueнаследование"><a class="anchor" href="#trueнаследование"></a>Наследование</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Важнейший механизм ООП, позволяющий
+описать новый класс на основе уже
+существующего
+● При наследовании свойства и функциональность
+родительского класса наследуются новым
+классом</p>
+</div>
+<div class="paragraph">
+<p>Происходит в стиле того, что два класса : напряжение и температуры идентичны, и у них можно провести наследование параметров.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="photo/main2.png" alt="main2">
+<img src="photo/tav.png" alt="tav">
 </div>
 </div>
 <div class="paragraph">
-<p>Но дальше у меня вылезает ошибка, и я не могу понять в связи с чем:</p>
+<p>На данный момент выглядит так, что у них все обобщенное, и можно сделать класс наследования.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="photo/help.png" alt="help">
+<img src="photo/1.png" alt="1">
+</div>
+</div>
+<div class="paragraph">
+<p>Есть так же скрытые, приватные атрибуты, и операции, но уже операции с массивом, состоящим из двух элементов - температуры и напряжения, для этого ещё используется указатель типа char*. (Как я понял, прочитав ещё лекцию 2, по указателям :D )</p>
+</div>
+<div class="paragraph">
+<p>Ну и так же операции, присущие данному классу IVariable, делается наследование для упрощения кода для пользователя, который не будет лезть в структурную составляющую.</p>
+</div>
+<div class="sect2">
+<h3 id="trueкласс-ivariable"><a class="anchor" href="#trueкласс-ivariable"></a>Класс IVariable</h3>
+<div class="literalblock">
+<div class="content">
+<pre>class IVariable
+{
+private:
+  const float B1= 0.0F;
+  const float K1 = 0.0F;
+  float Value = 0.0F;</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>    const char* Name = "Variable       " ;
+  public:
+IVariable(float B, float K, const char* str): B1(B), K1(K), Name(str)
+{
+};</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>float GetValue()
+{
+  return Value ;
+}</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>virtual void Calculate(uint32_t code)
+{
+   Value = code * B1 + K1 ;
+}</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>const char* GetName()
+{
+   return Name;
+}</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>};</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Здесь выглядит все так же, как в тех классах : напряжении и температуре, лишь различие что это всё объединено, а значит, что нужно писать одни операции
+(я просто любитель писать названия операций для разных классов разными, а тут надо все в одном названии делать)</p>
+</div>
+<div class="paragraph">
+<p>Получается, что есть главный класс IVariable, а два других класса наследуют его значения, его операции и так далее.</p>
+</div>
+<div class="paragraph">
+<p>Как итог, выходит вот такое:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="photo/result.png" alt="result">
+</div>
+</div>
+<div class="paragraph">
+<p>Ну и в итоге всего сделанного небольшие отсылки:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="photo/nd1.png" alt="nd1">
 </div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="photo/heelp2.png" alt="heelp2">
+<img src="photo/nd5.png" alt="nd5">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="photo/nd2.png" alt="nd2">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="photo/cool.png" alt="cool">
+</div>
+</div>
+<div class="paragraph">
+<p>*Надеюсь, мои мемы подойдут к вашим лекциям в следующие года.. *</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-01 21:46:53 +0500
+Last updated 2020-03-02 20:52:56 +0500
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
